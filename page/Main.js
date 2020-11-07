@@ -7,9 +7,11 @@ import { StyleSheet, Text, View,ScrollView,Dimensions,TouchableOpacity,ImageBack
 import ButtonCard from "../components/ButtonCard";
 import Category from "../components/Category";
 import data from "../data.json";
-import category from "../category.json"
+import category from "../category.json";
 
-export default function Main(){
+//책갈비에선 Main 컴포넌트에게 Props 형태로 
+// 페이지 이동 객체 데이터를 전달해줍니다
+export default function Main({navigation}){
 
     //문제 데이터를 관리하는 상태입니다.
     const [questionState,setQuestionState] = useState([])
@@ -19,6 +21,7 @@ export default function Main(){
     const [cateQuestionState, setCateQuestionState] = useState([])
 
     const selectCategory = (category) => {
+        console.log(category)
         //카테고리에 따라, 우리가 관리하던 문제 리스트 데이터(상태)를 새롭게 구성하면
         //화면이 다시 그려집니다. 즉, 리액트에서 화면은 데이터(상태)가 변경되면 새로운 데이터(상태)들로 다시 그려집니다.
         if(category == '전체'){
@@ -48,7 +51,8 @@ export default function Main(){
                 <View>
                   <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                     {categoryState.map((c,i)=>{
-                      return <Category key={i} title={c.title}/>
+                        //컴포넌트에 함수 이름 그대로 넘겨주면 됩니다!
+                      return <Category key={i} title={c.title} selectCategory={selectCategory}/>
                     })}
                     
                   </ScrollView>
@@ -63,10 +67,11 @@ export default function Main(){
                       고유 하다는 것을 알려줘야 해서요!
                   */}
                   {cateQuestionState.map((data,i)=>{
-                    //반복으로 돌면서 컴포넌트를 반환합니다.
-                    //어디로 여러분이 만든 컴포넌트를 화면에 보여줘야 하니까
-                    //결국 return 으로 반환하며화면을 그려줘야 합니다.
-                    return <ButtonCard key={i} title={data.title} image={data.image}/>
+		                 //카드 버튼에서 사용해야 하므로, navigation을 건네줍니다
+                    return <ButtonCard key={i} 
+												title={data.title} 
+												image={data.image} 
+												navigation={navigation}/>
                   })}
                 </View>
             </ScrollView>
