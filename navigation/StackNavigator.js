@@ -4,7 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 //페이지로 만든 컴포넌트들을 불러옵니다
 import Question from '../page/Question';
-import Main from '../page/Main';
+// import Main from '../page/Main';
 import Result from '../page/Result';
 import TabNavigator from '../navigation/TabNavigator';
 
