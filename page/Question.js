@@ -2,6 +2,11 @@ import React,{useEffect,useState} from 'react';
 import {View,Text,Image,ScrollView,StyleSheet,TouchableOpacity} from 'react-native'
 
 const Question = ({navigation,route}) => {
+  useEffect(()=>{
+    navigation.setOptions({
+        title:'문제!!'
+    })
+},[])
 
     //디테일 문제 페이지에서 문제를 관리할 상태 정의
     const [questionState, setQuestionState] = useState({
@@ -77,13 +82,8 @@ const Question = ({navigation,route}) => {
         ]
     })
     // 복습겸 다시 써보는 해체 할당 방식의 변수 정의!
-    const { title} = route.params;
-
-		useEffect(()=>{
-        navigation.setOptions({
-            title:'문제!!'
-        })
-    },[])
+    const { title } = route.params;
+    
 
     console.log("건네 받은 타이틀: "+ title)
     return (
@@ -98,7 +98,16 @@ const Question = ({navigation,route}) => {
                     {questionState.answer.map((a,i)=>{
                         //결과 화면에선 문제, 문제 이미지, 답, 해설 그리고 히스토리에 저장 할 문제 번호와 답안 번호를 goResult 함수에 넘겨줍니다.
                         return (
-                        <TouchableOpacity key={i} style={styles.answerView}>
+                        <TouchableOpacity 
+                        key={i} 
+                        style={styles.answerView} 
+                        onPress={()=> navigation.navigate("Result", {
+                          desc: a.answer_desc,
+                          image: questionState.image,
+                          question: questionState.question,
+                          answer: a.answer_title
+                        })}
+                        >
                             <Text style={styles.answerText} >{Number(i + 1) + '.' + a.answer_title}</Text>
                         </TouchableOpacity>)
                     })}

@@ -9,6 +9,7 @@ import StackNavigator from './navigation/StackNavigator'
 // import Main from "./page/Main"
 // import Loading from "./page/Loading";
 // import Question from "./page/Question";
+// import Result from './page/Result';
 
 import { AppLoading } from 'expo';
 
