@@ -1,10 +1,12 @@
 import React from "react";
-import { Button, TouchableOpacity,ImageBackground,Text,StyleSheet,Dimensions } from "react-native"
-const ButtonCard = ({title,image,navigation}) => {
+import { Button,TouchableOpacity,ImageBackground,Text,StyleSheet,Dimensions } from "react-native"
+
+// Main에서 받은 iddx 넣어줌. 
+const ButtonCard = ({title, idx,image, navigation}) => {
 
     return (
         <TouchableOpacity onPress={()=> navigation.navigate("Question",{
-							  title: title
+							  idx: idx
 							})}>
             {/* 함수처럼 비구조 할당 방식으로 풀어 헤쳐 넘겨 받은 값을 변수로써 바로 사용가능합니다 */}
             <ImageBackground  source={{uri:image}} resizeMode="cover" style={styles.scrollList} >
@@ -31,3 +33,7 @@ const styles = StyleSheet.create({
       fontWeight:'700',
     },
   });
+
+  
+
+
