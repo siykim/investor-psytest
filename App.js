@@ -20,6 +20,7 @@ import { Ionicons, FontAwesome } from "@expo/vector-icons";
 
 import { StatusBar } from 'expo-status-bar';
 
+
 export default function App() {
 
   //로딩중에 대한 상태 관리 === 처음엔 당연히 로딩중이니 값이 true 겠죠?

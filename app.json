@@ -17,14 +17,20 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+      "supportsTablet": true,
+      "buildNumber": "1.0.0",
+      "bundleIdentifier": "com.investor.psytest",
+      "config": {
+        "googleMobileAdsAppId": "ca-app-pub-2921549572079252~8120591071"
       }
-    },
+ },
+   "android": {
+      "package": "com.investor.psytest",
+      "versionCode": 1,
+      "config": {
+      "googleMobileAdsAppId": "ca-app-pub-2921549572079252~5812840555"
+  }
+},
     "web": {
       "favicon": "./assets/favicon.png"
     }
